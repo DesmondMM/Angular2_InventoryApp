@@ -27,3 +27,18 @@ class Product {
 
   }
 }
+
+@Component({
+  selector: 'inventory-app',
+  template:`
+    <div class="inventory-app">
+      (Products will go here soon)
+    </div>
+  `
+})
+
+class InventoryApp {
+
+}
+
+bootstrap(InventoryApp);
