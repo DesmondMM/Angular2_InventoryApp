@@ -29,10 +29,20 @@ class Product {
 }
 
 /**
+ * @ProductRow: A component for the view of a single Product
+ */
+@Component({
+  selector:'product-row',
+  inputs:['product-row'],
+  outputs:['product'],
+  host: {'class': 'item'},
+  directives:[ProductImage, ProductDepartment, PriceDisplay],
+})
+
+/**
  * @ProductList: A componet for rendering all ProductRows and
  * storing the currently selected Product
  */
-
 @Component({
   selector: 'products-list',
   directives: [ProductRow],
