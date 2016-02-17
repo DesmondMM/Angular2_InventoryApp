@@ -40,6 +40,29 @@ class Product {
   outputs: ['onProductSelected'],
 })
 
+class ProductList {
+  /**
+   * @input productList - hte Product[] passed to us
+   */
+  productList: Product[];
+
+  /**
+   * @output onProductSelected - outputs the current
+   *          Product whenever a new Product is selected
+   */
+  onProductSelected: EventEmitter<Product>;
+
+  /**
+   * @property currentProduct - local state containing
+   *            the currently selected `Product`
+   */
+  currentProduct: Product;
+
+  constructor(){
+    this.onProductSelected = new EventEmitter();
+  }
+}
+
 @Component({
   selector: 'inventory-app',
   directives: [ProductsList],
