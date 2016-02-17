@@ -71,7 +71,7 @@ class ProductImage {
     <span *ngFor="#name of product.department; #i=index">
       <a href="#">{{name}}</a>
       <span>{{i < (product.department.length-1) ? '>' : ''}}</span>
-    <span/>
+    </span>
   </div>
   `
 })
@@ -83,14 +83,13 @@ class ProductDepartment {
  * @ProductRow: A component for the view of a single Product
  */
 @Component({
-  selector:'product-row',
-  inputs:['product-row'],
-  outputs:['product'],
+  selector: 'product-row',
+  inputs: ['product'],
   host: {'class': 'item'},
-  directives:[ProductImage, ProductDepartment, PriceDisplay],
+  directives: [ProductImage, ProductDepartment, PriceDisplay],
   template: `
   <product-image [product]="product"></product-image>
-  <div claass="content">
+  <div class="content">
     <div class="header">{{product.name}}</div>
     <div class="meta">
       <div class="product-sku">SKU #{{product.sku}}</div>
@@ -102,7 +101,6 @@ class ProductDepartment {
   <price-display [price]="product.price"></price-display>
   `
 })
-
 class ProductRow{
   product: Product;
 }
@@ -119,7 +117,7 @@ class ProductRow{
   template: `
   <div class="ui items">
     <product-row
-      *ngFor="myProduct of productList"
+      *ngFor="#myProduct of productList"
       [product]="myProduct"
       (click)="clicked(myProduct)"
       [class.selected]="isSelected(myProduct)">
@@ -166,37 +164,36 @@ class ProductsList {
 @Component({
   selector: 'inventory-app',
   directives: [ProductsList],
-  template:`
-    <div class="inventory-app">
-      <product-list
-        [productlist]="products"
-        (onProductSelected)="productWasSelected($event)">
-      </product-list>
-    </div>
+  template: `
+  <div class="inventory-app">
+    <products-list
+      [productList]="products"
+      (onProductSelected)="productWasSelected($event)">
+    </products-list>
+  </div>
   `
 })
-
 class InventoryApp {
   products: Product[];
 
-  constructor(){
+  constructor() {
     this.products = [
-        new Product(
-            'MYSHOES', 'Black Running Shoes',
-            '/resources/images/products/black-shoes.jpg',
-            ['Men', 'Shoes', 'Running Shoes'],
-            109.99),
       new Product(
-              'NEATOJACKET', 'Blue Jacket',
-              '/resources/images/products/blue-jacket.jpg',
-              ['Women', 'Apparel', 'Jackets & Vests'],
-              283.99),
+        'MYSHOES', 'Black Running Shoes',
+        '/resources/images/products/black-shoes.jpg',
+        ['Men', 'Shoes', 'Running Shoes'],
+        109.99),
       new Product(
-              'NICEHAT', 'A Nice Black Hat',
-              '/resources/images/products/black-hat.jpg',
-              ['Men', 'Accessories', 'Hats'],
-              29.99),
-    ];
+        'NEATOJACKET', 'Blue Jacket',
+        '/resources/images/products/blue-jacket.jpg',
+        ['Women', 'Apparel', 'Jackets & Vests'],
+        238.99),
+      new Product(
+        'NICEHAT', 'A Nice Black Hat',
+        '/resources/images/products/black-hat.jpg',
+        ['Men', 'Accessories', 'Hats'],
+        29.99)
+      ];
   }
 
   productWasSelected(product: Product): void {
