@@ -32,23 +32,39 @@ class Product {
   selector: 'inventory-app',
   template:`
     <div class="inventory-app">
-      <h1>{{product.name}}</h1>
-      <span>{{product.sku}}</span>
+      <product-list
+        [productlist]="products"
+        (onProductSelected)="productWasSelected($event)">
+      </product-list>
     </div>
   `
 })
 
 class InventoryApp {
-  product: Product;
+  products: Product[];
 
   constructor(){
-    this.product = new Product(
-    'NICEHAT', 'A Nice Black Hat',
-    '/resources/images/products/black-hat.jpg',
-    ['men', 'Accessories', 'Hats'],
-    29.99);
+    this.products = [
+        new Product(
+            'MYSHOES', 'Black Running Shoes',
+            '/resources/images/products/black-shoes.jpg',
+            ['Men', 'Shoes', 'Running Shoes'],
+            109.99),
+      new Product(
+              'NEATOJACKET', 'Blue Jacket',
+              '/resources/images/products/blue-jacket.jpg',
+              ['Women', 'Apparel', 'Jackets & Vests'],
+              283.99),
+      new Product(
+              'NICEHAT', 'A Nice Black Hat',
+              '/resources/images/products/black-hat.jpg',
+              ['Men', 'Accessories', 'Hats'],
+              29.99),
+    ];
+  }
 
-
+  productWasSelected(product: Product): void {
+    console.log('Product clicked: ', product);
   }
 }
 
