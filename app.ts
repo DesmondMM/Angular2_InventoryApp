@@ -28,8 +28,21 @@ class Product {
   }
 }
 
+/**
+ * @ProductList: A componet for rendering all ProductRows and
+ * storing the currently selected Product
+ */
+
+@Component({
+  selector: 'products-list',
+  directives: [ProductRow],
+  inputs: ['productList'],
+  outputs: ['onProductSelected'],
+})
+
 @Component({
   selector: 'inventory-app',
+  directives: [ProductsList],
   template:`
     <div class="inventory-app">
       <product-list
