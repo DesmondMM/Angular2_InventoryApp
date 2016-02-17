@@ -128,7 +128,7 @@ class ProductRow{
   `
 })
 
-class ProductList {
+class ProductsList {
   /**
    * @input productList - hte Product[] passed to us
    */
