@@ -32,10 +32,6 @@ class Product {
  * @PriceDisplay: A component to show the price of a
  * Product
  */
-
-/**
- * ProductImage: A component to show a single Product's image
- */
 @Component({
   selector: 'price-display',
   inputs: ['price'],
@@ -47,6 +43,9 @@ class PriceDisplay {
   price: number;
 }
 
+/**
+ * ProductImage: A component to show a single Product's image
+ */
 @Component({
   selector: 'product-image',
   host: {class: 'ui small image'},
@@ -57,6 +56,26 @@ class PriceDisplay {
 })
 
 class ProductImage {
+  product: Product;
+}
+
+/**
+ * @productDepartment: A component to show the breadcrumps to a
+ * Product's department
+ */
+@Component({
+  selector: 'product-department',
+  inputs: ['product'],
+  template: `
+  <div class="product-department">
+    <span *ngFor="#name of product.department; #i=index">
+      <a href="#">{{name}}</a>
+      <span>{{i < (product.department.length-1) ? '>' : ''}}</span>
+    <span/>
+  </div>
+  `
+})
+class ProductDepartment {
   product: Product;
 }
 
